@@ -21,6 +21,7 @@ def home():
 def handle_query():
     print("CALLING HANDLE QUERY....................")
     data = request.json
+    
     response = rag.query(data['question'])
     return jsonify({"answer": response})
 
