@@ -22,6 +22,7 @@ class LegalRAGSystem:
         self.qa_chain = None
         
     def load_documents(self, pdf_paths):
+        print("LOADING DOCUMENTS......")
         """Process both single and two-column PDFs"""
         combined_text = ""
         
@@ -42,6 +43,7 @@ class LegalRAGSystem:
         self.vector_store = FAISS.from_texts(chunks, self.embeddings)
         
     def initialize_llm(self, endpoint="http://10.50.10.240:10023", model="llama3.2"):
+        print("LLM INITIALIZED..............")
         prompt = PromptTemplate(
             input_variables=["context", "question"],
             template="""Legal Assistant Context: {context}
@@ -57,6 +59,7 @@ class LegalRAGSystem:
         )
     
     def query(self, question):
+        print("QUERY RUNNING.............")
         return self.qa_chain.run(question)
     
     def evaluate(self, test_file="test_questions.json"):

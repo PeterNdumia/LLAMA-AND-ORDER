@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, CssBaseline } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import Header from './components/Header';
 import ChatWindow from './components/ChatWindow';
 import { queryRAG } from './services/api';

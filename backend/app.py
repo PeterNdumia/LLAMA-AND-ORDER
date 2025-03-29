@@ -1,18 +1,21 @@
 from flask import Flask, request, jsonify
 from rag_system import LegalRAGSystem
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
-rag = LegalRAGSystem()
+CORS(app)
 
-@app.route('/')
-def home():
-    return "Legal RAG Backend Running!"
+rag = LegalRAGSystem()
 
 # Initialize system
 pdf_paths = ["PIPEDA.pdf", "GDPR.pdf", "ARTIFICIALINTELLIGENCEACT.pdf"]
 rag.load_documents(pdf_paths)
 rag.initialize_llm()
+
+@app.route('/')
+def home():
+    return "Legal RAG Backend Running!"
 
 @app.route('/query', methods=['POST'])
 def handle_query():
