@@ -50,6 +50,7 @@ class LegalRAGSystem:
                        Question: {question}
                        Answer:"""
         )
+        print("Prompt", prompt)
         ollama = Ollama(base_url=endpoint, model=model)
         self.qa_chain = RetrievalQA.from_chain_type(
             llm=ollama,
@@ -60,6 +61,7 @@ class LegalRAGSystem:
     
     def query(self, question):
         print("QUERY RUNNING.............")
+        print("Question", question)
         return self.qa_chain.run(question)
     
     def evaluate(self, test_file="test_questions.json"):

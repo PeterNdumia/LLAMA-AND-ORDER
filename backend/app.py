@@ -17,8 +17,9 @@ rag.initialize_llm()
 def home():
     return "Legal RAG Backend Running!"
 
-@app.route('/query', methods=['POST'])
+@app.route('/api/query', methods=['POST'])
 def handle_query():
+    print("CALLING HANDLE QUERY....................")
     data = request.json
     response = rag.query(data['question'])
     return jsonify({"answer": response})
