@@ -20,6 +20,7 @@ def home():
 @app.route('/query', methods=['POST'])
 def handle_query():
     data = request.json
+    
     response = rag.query(data['question'])
     return jsonify({"answer": response})
 
