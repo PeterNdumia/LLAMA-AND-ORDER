@@ -1,24 +1,43 @@
 import React, { useState } from 'react';
-import { Container, CssBaseline } from '@mui/material';
-import QueryForm from './components/QueryForm';
-import ResponseView from './components/ResponseView';
+import { Box, CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Header from './components/Header';
+import ChatWindow from './components/ChatWindow';
 import { queryRAG } from './services/api';
+import theme from './styles/theme';
+import InputBar from './components/InputBar';
 
 function App() {
-  const [answer, setAnswer] = useState('');
+  const [messages, setMessages] = useState([
+    { 
+      text: "Hello! I'm your Legal AI Assistant. Ask me anything about PIPEDA, GDPR, or the AI Act.", 
+      sender: 'bot' 
+    }
+  ]);
 
-  const handleQuerySubmit = async (question) => {
-    const response = await queryRAG(question);
-    setAnswer(response);
+  const handleSend = async (message) => {
+    // Add user message
+    setMessages(prev => [...prev, { text: message, sender: 'user' }]);
+    
+    // Get bot response
+    const response = await queryRAG(message);
+    setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
   };
 
   return (
-    <Container component="main" maxWidth="md">
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <h1>Legal RAG Assistant</h1>
-      <QueryForm onSubmit={handleQuerySubmit} />
-      {answer && <ResponseView answer={answer} />}
-    </Container>
+      <Box sx={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        height: '100vh',
+        bgcolor: 'background.default'
+      }}>
+        <Header />
+        <ChatWindow messages={messages} />
+        <InputBar onSend={handleSend} />
+      </Box>
+    </ThemeProvider>
   );
 }
 
