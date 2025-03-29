@@ -1,0 +1,81 @@
+{
+    "questions": [
+      {
+        "id": "AI_ACT_001",
+        "document": "Artificial Intelligence Act",
+        "question": "What must a provider of a high-risk AI system and the third party supplier do according to Article 25 of the Artificial Intelligence Act?",
+        "answer": "The provider of a high-risk AI system and the third party that supplies an AI system, tools, services, components, or processes that are used or integrated in a high-risk AI system shall, by written agreement, specify the necessary information, capabilities, technical access and other assistance based on the generally acknowledged state of the art, in order to enable the provider of the high-risk AI system to fully comply with the obligations set out in this Regulation.",
+        "keywords": ["high-risk AI", "written agreement", "technical access", "compliance"]
+      },
+      {
+        "id": "PIPEDA_001",
+        "document": "PIPEDA",
+        "question": "How does PIPEDA define a business transaction?",
+        "answer": [
+          "(a) the purchase, sale or other acquisition or disposition of an organization or a part of an organization, or any of its assets;",
+          "(b) the merger or amalgamation of two or more organizations;",
+          "(c) the making of a loan or provision of other financing to an organization or a part of an organization;",
+          "(d) the creating of a charge on, or the taking of a security interest in or a security on, any assets or securities of an organization;",
+          "(e) the lease or licensing of any of an organization's assets; and",
+          "(f) any other prescribed arrangement between two or more organizations to conduct a business activity. (transaction commerciale)"
+        ]
+      },
+      {
+        "id": "PIPEDA_002",
+        "document": "PIPEDA",
+        "question": "According to the Division 4 of the PIPEDA, what can the Commissioner do regarding public interest?",
+        "answer": "The Commissioner may, if the Commissioner considers that it is in the public interest to do so, make public any information that comes to his or her knowledge in the performance or exercise of any of his or her duties or powers under this Part.",
+        "keywords": ["Commissioner", "public interest", "disclosure"]
+      },
+      {
+        "id": "GDPR_001",
+        "document": "GDPR",
+        "question": "Is the protection of natural persons in relation to the processing of data a fundamental right?",
+        "answer": "The protection of natural persons in relation to the processing of personal data is a fundamental right. Article 8(1) of the Charter of Fundamental Rights of the European Union (the 'Charter') and Article 16(1) of the Treaty on the Functioning of the European Union (TFEU) provide that everyone has the right to the protection of personal data concerning him or her.",
+        "keywords": ["fundamental right", "personal data", "protection"]
+      },
+      {
+        "id": "GDPR_002",
+        "document": "GDPR",
+        "question": "Does the GDPR require a legislative act adopted by a parliament?",
+        "answer": "Where this Regulation refers to a legal basis or a legislative measure, this does not necessarily require a legislative act adopted by a parliament, without prejudice to requirements pursuant to the constitutional order of the Member State concerned. However, such a legal basis or legislative measure should be clear and precise and its application should be foreseeable to persons subject to it, in accordance with the case-law of the Court of Justice of the European Union (the 'Court of Justice') and the European Court of Human Rights.",
+        "keywords": ["legislative act", "legal basis", "foreseeable"]
+      },
+      {
+        "id": "AI_ACT_002",
+        "document": "Artificial Intelligence Act",
+        "question": "According to the Artificial Intelligence act, what is AI?",
+        "answer": "AI is a fast evolving family of technologies that contributes to a wide array of economic, environmental and societal benefits across the entire spectrum of industries and social activities. By improving prediction, optimising operations and resource allocation, and personalising digital solutions available for individuals and organisations, the use of AI can provide key competitive advantages to undertakings and support socially and environmentally beneficial outcomes, for example in healthcare, agriculture, food safety, education and training, media, sports, culture, infrastructure management, energy, transport and logistics, public services, security, justice, resource and energy efficiency, environmental monitoring, the conservation and restoration of biodiversity and ecosystems and climate change mitigation and adaptation.",
+        "keywords": ["AI definition", "technologies", "economic benefits"]
+      },
+      {
+        "id": "AI_ACT_003",
+        "document": "Artificial Intelligence Act",
+        "question": "What kind of biometric categorisation systems are prohibited, and which ones are not?",
+        "answer": "Biometric categorisation systems that are based on natural persons' biometric data, such as an individual person's face or fingerprint, to deduce or infer an individuals' political opinions, trade union membership, religious or philosophical beliefs, race, sex life or sexual orientation should be prohibited. That prohibition should not cover the lawful labelling, filtering or categorisation of biometric data sets acquired in line with Union or national law according to biometric data, such as the sorting of images according to hair colour or eye colour, which can for example be used in the area of law enforcement.",
+        "keywords": ["biometric", "prohibited", "categorisation"]
+      },
+      {
+        "id": "PIPEDA_003",
+        "document": "PIPEDA",
+        "section": "Consent Requirements",
+        "question": "According to PIPEDA when is consent required for the collection of personal information?",
+        "answer": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information. Typically, an organization will seek consent for the use or disclosure of the information at the time of collection. In certain circumstances, consent with respect to use or disclosure may be sought after the information has been collected but before use (for example, when an organization wants to use information for a purpose not previously identified).",
+        "keywords": ["consent", "personal information", "collection"]
+      }
+    ],
+    "metadata": {
+      "source_documents": [
+        "PIPEDA.pdf",
+        "GDPR.pdf",
+        "ARTIFICIALINTELLIGENCEACT.pdf"
+      ],
+      "evaluation_metrics": [
+        "exact_match",
+        "keyword_presence",
+        "semantic_similarity"
+      ],
+      "created": "2025-03-29",
+      "version": "1.0"
+    }
+  }
