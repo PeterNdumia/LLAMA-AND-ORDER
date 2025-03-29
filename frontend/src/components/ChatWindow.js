@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Box, Paper, Typography, Avatar } from '@mui/material';
+import { Box} from '@mui/material';
 import Message from './Message';
 
 export default function ChatWindow({ messages }) {
