@@ -1,7 +1,6 @@
 # LLAMA AND ORDER: A Legal Assistant Powered by Retrieval Augmented Generation
 
-**Final Project – CST8507**  
-**Authors**: Farhan Mahamud (41175682), Peter Ndumia (41124432)
+**Authors**: Peter Ndumia, Farhan Mahamud
 
 ---
 
