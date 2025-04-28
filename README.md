@@ -35,8 +35,8 @@ It offers a web-based chat interface for querying regulations quickly and accura
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/PeterNdumia/Legal-RAG-System
-cd Legal-RAG-System
+git clone https://github.com/PeterNdumia/LLAMA-AND-ORDER
+cd LLAMA-AND-ORDER
 ```
 
 ### 2. Backend Setup (Flask)
