@@ -1,62 +1,128 @@
-# LLAMA AND ORDER: A Legal Assistant Using Retrieval Augmented Generation
----
+# LLAMA AND ORDER: A Legal Assistant Powered by Retrieval Augmented Generation
 
-## Overview
-
-**LLAMA AND ORDER** is a legal assistant built with **Retrieval Augmented Generation (RAG)**, designed to help organizations and individuals quickly retrieve and understand regulations concerning artificial intelligence and data privacy.
-
-It uses a combination of:
-- **Llama 3.2** for language generation,
-- **GDPR**, **PIPEDA**, and the **EU Artificial Intelligence Act** as legal sources,
-- **FAISS** for efficient document retrieval,
-- A web-based interface for interaction.
+**Final Project – CST8507**  
+**Authors**: Farhan Mahamud (41175682), Peter Ndumia (41124432)
 
 ---
 
-## Features
+## Project Overview
 
-- **Multi-Document Search**: GDPR, PIPEDA, and AI Act integrated.
-- **Semantic Retrieval**: Sentence embeddings (`all-mpnet-base-v2`) with FAISS indexing.
-- **Locally Hosted LLM**: Llama 3.2 via Ollama Server/API.
-- **Web Interface**: Frontend built with React.js, backend in FastAPI.
+**LLAMA AND ORDER** is a legal assistant built using **Retrieval Augmented Generation (RAG)**, combining **LangChain**, **FAISS**, and a **locally hosted Llama 3.2 model** served through a **Flask** backend.  
+The system retrieves and summarizes legal information from:
 
----
+- **GDPR** (General Data Protection Regulation),
+- **PIPEDA** (Personal Information Protection and Electronic Documents Act),
+- **EU Artificial Intelligence Act**.
 
-## System Design
-
-1. **Data Extraction**
-   - Extracted legal texts from PDFs (handling two-column English/French format for PIPEDA).
-   - Chunked text (1000 characters, 200 overlap).
-
-2. **Vectorization**
-   - Used Hugging Face `all-mpnet-base-v2` model to embed text.
-
-3. **Retrieval**
-   - Stored embeddings in FAISS for fast similarity search.
-
-4. **Answer Generation**
-   - Retrieved relevant chunks and passed them to Llama 3.2 to generate final answers.
-
-5. **Frontend/Backend**
-   - React.js frontend communicates with a Flask backend.
+It offers a web-based chat interface for querying regulations quickly and accurately.
 
 ---
 
-## Installation
+## Tech Stack
 
-**Clone the repository**
+| Component             | Technology                                     |
+| ---------------------- | ---------------------------------------------- |
+| **LLM**                | Llama 3.2 via Ollama Server/API                |
+| **Retrieval Pipeline** | LangChain (`RetrievalQA`, `PromptTemplate`, `LLMChain`) |
+| **Embeddings**         | Hugging Face `all-mpnet-base-v2`               |
+| **Vector Database**    | FAISS (Facebook AI Similarity Search)          |
+| **Backend**            | Flask (Python)                                 |
+| **Frontend**           | React.js (npm)                                 |
+| **Document Parsing**   | LangChain loaders (`PdfPlumber`, `PyPDFLoader`) |
+
+---
+
+## Installation Guide
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/PeterNdumia/Legal-RAG-System
 cd Legal-RAG-System
+```
 
-
+### 2. Backend Setup (Flask)
+```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
+```
 
-
+### 3. Frontend Setup (React)
+```bash
 cd frontend
 npm install
 npm start
+```
+
+### 4. Requirements
+- Node.js installed
+- Python 3.9+ installed
+- Ollama server running Llama 3.2 locally
+- GDPR, PIPEDA, and AI Act PDFs present in the working directory
+
+---
+
+## System Architecture
+
+1. **Document Loading**
+   - PDFs loaded with LangChain's `PdfPlumber` and `PyPDFLoader`.
+   - Special extraction for English-only sections in PIPEDA.
+
+2. **Text Preprocessing**
+   - Split into chunks (~1000 characters with 200-character overlap) using `RecursiveCharacterTextSplitter`.
+
+3. **Vectorization**
+   - Sentence embeddings generated using `all-mpnet-base-v2` model.
+
+4. **Vector Storage**
+   - Embeddings stored and indexed with FAISS for efficient retrieval.
+
+5. **Retrieval-Augmented Generation**
+   - LangChain's `RetrievalQA` pipeline retrieves relevant chunks.
+   - Custom `PromptTemplate` structures the Llama 3.2 inputs.
+   - `LLMChain` generates user-friendly legal answers.
+
+6. **Web Application**
+   - Flask backend communicates with Llama model.
+   - React frontend enables user queries and displays answers.
+
+---
+
+## Evaluation
+
+- **Cosine Similarity Accuracy**: 70.02%
+- **Manual Evaluation Accuracy**: 100% (all answers correct)
+- **Comparison with GPT-3.5**: LLAMA AND ORDER provided more detailed, regulation-specific answers compared to general LLMs.
+
+---
+
+## Challenges and Solutions
+
+- **Computational Resources**: Solved by accessing external GPU hardware.
+- **PDF Multilingual Layouts**: Filtered PIPEDA to extract only English text.
+- **Semantic Retrieval**: Optimized chunk sizes and vector search for better accuracy.
+
+---
+
+## 🚀 Future Work
+
+- Add more legal documents (e.g., CCPA, HIPAA, OECD AI Principles).
+- Fine-tune the LLM on legal-specific QA datasets.
+- Implement search filters by document and regulation.
+- Improve frontend UX with document browsing and article lookup.
+
+---
+
+## References
+
+- [GDPR Official Documentation](https://gdpr-info.eu/)
+- [EU Artificial Intelligence Act](https://artificialintelligenceact.eu/)
+- [Office of the Privacy Commissioner of Canada (PIPEDA)](https://www.priv.gc.ca/en/)
+- [LangChain Documentation](https://python.langchain.com/docs/)
+- [Sentence Transformers (Hugging Face)](https://huggingface.co/sentence-transformers/all-mpnet-base-v2)
+
+---
+
+> _"Compliance through intelligence: enabling responsible AI with accessible legal knowledge."_
