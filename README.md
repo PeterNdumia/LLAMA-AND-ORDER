@@ -38,7 +38,7 @@ It uses a combination of:
    - Retrieved relevant chunks and passed them to Llama 3.2 to generate final answers.
 
 5. **Frontend/Backend**
-   - React.js frontend communicates with a FastAPI backend.
+   - React.js frontend communicates with a Flask backend.
 
 ---
 
