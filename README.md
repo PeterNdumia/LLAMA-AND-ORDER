@@ -105,7 +105,7 @@ npm start
 
 ---
 
-## 🚀 Future Work
+## Future Work
 
 - Add more legal documents (e.g., CCPA, HIPAA, OECD AI Principles).
 - Fine-tune the LLM on legal-specific QA datasets.
