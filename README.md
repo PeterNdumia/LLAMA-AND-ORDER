@@ -124,4 +124,10 @@ npm start
 
 ---
 
+## Screenshot
+
+![llamaandorder](https://github.com/user-attachments/assets/b30f7cd2-a494-4dc0-b87d-972547f2e1fa)
+
+
 > _"Compliance through intelligence: enabling responsible AI with accessible legal knowledge."_
+
