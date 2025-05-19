@@ -15,6 +15,10 @@ The system retrieves and summarizes legal information from:
 
 It offers a web-based chat interface for querying regulations quickly and accurately.
 
+## Screenshot
+
+![llamaandorder](https://github.com/user-attachments/assets/b30f7cd2-a494-4dc0-b87d-972547f2e1fa)
+
 ---
 
 ## Tech Stack
@@ -123,10 +127,6 @@ npm start
 - [Sentence Transformers (Hugging Face)](https://huggingface.co/sentence-transformers/all-mpnet-base-v2)
 
 ---
-
-## Screenshot
-
-![llamaandorder](https://github.com/user-attachments/assets/b30f7cd2-a494-4dc0-b87d-972547f2e1fa)
 
 
 > _"Compliance through intelligence: enabling responsible AI with accessible legal knowledge."_
