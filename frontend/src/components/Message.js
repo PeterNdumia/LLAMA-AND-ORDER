@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Avatar } from '@mui/material';
+import { Box, Typography, Avatar, Chip, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const MessageBubble = styled(Box)(({ theme, sender }) => ({
@@ -19,12 +19,17 @@ const MessageBubble = styled(Box)(({ theme, sender }) => ({
   whiteSpace: 'pre-wrap'
 }));
 
-export default function Message({ text, sender }) {
+export default function Message({ text, sender, sources }) {
+  // Handle both string and RAG response object
+  const content = typeof text === 'object' ? text.answer : text;
+  const messageSources = sources || (typeof text === 'object' ? text.sources : []);
+
   return (
     <Box sx={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: sender === 'user' ? 'flex-end' : 'flex-start'
+      alignItems: sender === 'user' ? 'flex-end' : 'flex-start',
+      width: '100%'
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
         {sender === 'bot' && (
@@ -44,8 +49,38 @@ export default function Message({ text, sender }) {
           {sender === 'user' ? 'You' : 'Legal Assistant'}
         </Typography>
       </Box>
+      
       <MessageBubble sender={sender}>
-        <Typography>{text}</Typography>
+        <Typography>{content}</Typography>
+        
+        {messageSources && messageSources.length > 0 && (
+          <>
+            <Divider sx={{ 
+              my: 1, 
+              borderColor: sender === 'user' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)' 
+            }} />
+            <Box sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap',
+              gap: 0.5,
+              '& .MuiChip-root': {
+                fontSize: '0.65rem',
+                height: 20,
+                color: sender === 'user' ? 'rgba(255,255,255,0.8)' : undefined,
+                borderColor: sender === 'user' ? 'rgba(255,255,255,0.3)' : undefined
+              }
+            }}>
+              {messageSources.map((source, index) => (
+                <Chip 
+                  key={index}
+                  label={source}
+                  size="small"
+                  variant="outlined"
+                />
+              ))}
+            </Box>
+          </>
+        )}
       </MessageBubble>
     </Box>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Box} from '@mui/material';
+import { Box } from '@mui/material';
 import Message from './Message';
 
 export default function ChatWindow({ messages }) {
@@ -20,7 +20,8 @@ export default function ChatWindow({ messages }) {
         <Message 
           key={index} 
           text={msg.text} 
-          sender={msg.sender} 
+          sender={msg.sender}
+          sources={msg.sources} // Pass sources to Message component
         />
       ))}
       <div ref={endRef} />

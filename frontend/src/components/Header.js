@@ -6,7 +6,7 @@ export default function Header() {
     <AppBar position="static" elevation={0}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Legal AI Assistant
+          Llama and Order
         </Typography>
       </Toolbar>
     </AppBar>
