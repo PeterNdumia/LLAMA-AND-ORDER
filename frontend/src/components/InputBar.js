@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Box, TextField, IconButton } from '@mui/material';
+import { Box, TextField, IconButton, Tooltip,Typography, } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import MicIcon from '@mui/icons-material/Mic';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
-export default function InputBar({ onSend }) {
+export default function InputBar({ onSend, disabled }) {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
@@ -14,13 +16,27 @@ export default function InputBar({ onSend }) {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{
-      p: 2,
-      borderTop: '1px solid',
-      borderColor: 'divider',
-      bgcolor: 'background.paper'
-    }}>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <Box 
+      component="form" 
+      onSubmit={handleSubmit} 
+      sx={{
+        p: 2,
+        borderTop: '1px solid',
+        borderColor: 'divider',
+        bgcolor: 'background.paper',
+      }}
+    >
+      <Box sx={{ 
+        display: 'flex', 
+        alignItems: 'center',
+        gap: 1,
+      }}>
+        <Tooltip title="Attach document">
+          <IconButton size="small">
+            <AttachFileIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        
         <TextField
           fullWidth
           multiline
@@ -29,31 +45,48 @@ export default function InputBar({ onSend }) {
           size="small"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="Ask a legal question..."
+          placeholder="Ask about PIPEDA, GDPR, or EU AI Act..."
+          disabled={disabled}
           sx={{
-            mr: 1,
             '& .MuiOutlinedInput-root': {
               borderRadius: '24px',
-              bgcolor: 'background.default'
-            }
+              bgcolor: 'background.default',
+              '& fieldset': {
+                borderColor: 'divider',
+              },
+            },
           }}
         />
+        
+        <Tooltip title="Voice input">
+          <IconButton size="small" disabled={disabled}>
+            <MicIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        
         <IconButton 
           type="submit" 
           color="primary"
-          disabled={!message.trim()}
+          disabled={!message.trim() || disabled}
           sx={{ 
             p: '10px',
             bgcolor: 'primary.main',
             color: 'primary.contrastText',
             '&:hover': {
-              bgcolor: 'primary.dark'
-            }
+              bgcolor: 'primary.dark',
+            },
+            '&:disabled': {
+              bgcolor: 'grey.300',
+              color: 'grey.500',
+            },
           }}
         >
-          <SendIcon />
+          <SendIcon fontSize="small" />
         </IconButton>
       </Box>
+      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+        Llama and Order may produce inaccurate information about laws and regulations.
+      </Typography>
     </Box>
   );
 }
